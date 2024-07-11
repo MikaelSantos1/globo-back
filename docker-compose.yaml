@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  postgres:
+    container_name: api-imbd
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: api-imbd
+      POSTGRES_PASSWORD: api-imbd
+      POSTGRES_DB: api-imbd
+      PGDATA: /data/postgres
+    volumes:
+      - ./data/pg:/data/postgres
