@@ -3,9 +3,9 @@ import { UsersRepository } from "../repositories/users-repository";
 
 interface UpdateUserUseCaseRequest {
   userId: string;
-  email: string;
-  name: string;
-  role: "ADMIN" | "USER";
+  email?: string;
+  name?: string;
+  role?: "ADMIN" | "USER";
 }
 
 export class UpdateUserUseCase {
@@ -17,6 +17,15 @@ export class UpdateUserUseCase {
     name,
     role,
   }: UpdateUserUseCaseRequest): Promise<void> {
+    let usersWithSameEmail;
+    if (email) {
+      usersWithSameEmail = await this.usersRepository.findByEmail(email);
+    }
+
+    if (usersWithSameEmail) {
+      throw new Error("user with same email already exists");
+    }
+
     await this.usersRepository.update({ email, name, role }, userId);
   }
 }

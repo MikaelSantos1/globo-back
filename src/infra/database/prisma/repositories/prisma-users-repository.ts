@@ -33,4 +33,14 @@ export class PrismaUsersRepository implements UsersRepository {
       },
     });
   }
+  async disable(userId: string): Promise<void> {
+    await prisma.user.update({
+      where: {
+        id: userId,
+      },
+      data: {
+        is_active: false,
+      },
+    });
+  }
 }

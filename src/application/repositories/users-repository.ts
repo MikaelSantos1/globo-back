@@ -7,4 +7,5 @@ export interface UsersRepository {
     data: Omit<Prisma.UserUpdateInput, "password">,
     id: string
   ): Promise<void>;
+  disable(userId: string): Promise<void>;
 }

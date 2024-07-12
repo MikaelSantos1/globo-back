@@ -25,6 +25,7 @@ model User {
   password_hash String
   role          Role     @default(USER)
   created_at    DateTime @default(now())
+  is_active     Boolean  @default(true)
 
   @@map("users")
 }
