@@ -29,3 +29,58 @@ model User {
 
   @@map("users")
 }
+
+model Movie {
+  id   String @id @default(uuid())
+  name String
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  genre    Genre  @relation(fields: [genre_id], references: [id])
+  genre_id String
+
+  MovieCast   MovieCast[]
+  MovieRating MovieRating[]
+}
+
+model Genre {
+  id          String   @id @default(uuid())
+  name        String
+  description String
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+  Movie       Movie[]
+}
+
+model Person {
+  id   String      @id @default(uuid())
+  name String
+  type PersonType
+  cast MovieCast[]
+}
+
+model MovieCast {
+  id String @id @default(uuid())
+
+  role     String
+  movie    Movie  @relation(fields: [movie_id], references: [id])
+  movie_id String
+
+  person    Person @relation(fields: [person_id], references: [id])
+  person_id String
+}
+
+model MovieRating {
+  id     String  @id @default(uuid())
+  rating Decimal
+
+  created_at DateTime @default(now())
+  movie      Movie    @relation(fields: [movie_id], references: [id])
+  movie_id   String
+}
+
+enum PersonType {
+  ACTOR
+  DIRECTOR
+}
