@@ -3,4 +3,10 @@ import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
   plugins: [tsconfigPaths()],
+  test: {
+    environmentMatchGlobs: [
+      ["src/infra/http/controllers/**", "src/test/setup-e2e.ts"],
+    ],
+    dir: "src",
+  },
 });

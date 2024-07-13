@@ -1,3 +1,4 @@
-USERS
-[X]-  CADASTRAR NOVOS USUARIOS
-[] - ATUALIZAR USUARIOS
+- Duvidas/ Regras de negócio
+
+- Um admin pode excluir/editar outros usuarios?
+- Como vai ser cadastrado diretor/atores, vai ser atraves do front com algum input/select?
