@@ -31,26 +31,26 @@ model User {
 }
 
 model Movie {
-  id   String @id @default(uuid())
-  name String
-
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
-
-  genre    Genre  @relation(fields: [genre_id], references: [id])
-  genre_id String
-
-  MovieCast   MovieCast[]
-  MovieRating MovieRating[]
-}
-
-model Genre {
   id          String   @id @default(uuid())
   name        String
   description String
   created_at  DateTime @default(now())
   updated_at  DateTime @updatedAt
-  Movie       Movie[]
+
+  genre    Genre  @relation(fields: [genre_id], references: [id])
+  genre_id String
+
+  movieCast   MovieCast[]
+  movieRating MovieRating[]
+}
+
+model Genre {
+  id   String @id @default(uuid())
+  name String
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  Movie      Movie[]
 }
 
 model Person {
@@ -63,7 +63,6 @@ model Person {
 model MovieCast {
   id String @id @default(uuid())
 
-  role     String
   movie    Movie  @relation(fields: [movie_id], references: [id])
   movie_id String
 
