@@ -20,7 +20,7 @@ export async function getMovieDetails(
     const movie = await getMovieDetailsUseCase.execute({
       movieId,
     });
-    return reply.status(201).send(movie);
+    return reply.status(200).send(movie);
   } catch (err) {
     if (err instanceof ResourceNotFoundError) {
       return reply.status(400).send({ err: err.message });
