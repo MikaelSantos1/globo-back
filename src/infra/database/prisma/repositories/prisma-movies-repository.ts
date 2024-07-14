@@ -8,7 +8,6 @@ import { prisma } from "@/infra/lib/prisma";
 
 export class PrismaMoviesRepository implements MoviesRepository {
   async searchMany(q: string) {
-    console.log(q);
     const movies: MovieResponse[] = await prisma.movie.findMany({
       include: {
         genre: true,
@@ -114,6 +113,15 @@ export class PrismaMoviesRepository implements MoviesRepository {
     });
   }
   async findById(id: string) {
+    const movie: MovieResponse | null = await prisma.movie.findFirst({
+      where: {
+        id,
+      },
+    });
+
+    return movie;
+  }
+  async getMovieDetails(id: string) {
     const movie: MovieResponse | null = await prisma.movie.findFirst({
       where: {
         id,

@@ -7,6 +7,7 @@ import { VoteMovie } from "./vote-movie-controller";
 import { FetchMoviesUseCase } from "@/application/use-cases/fetch-movies-use-case";
 import { fetchMovies } from "./fetch-movies-controller";
 import { searchMovies } from "./search-movies-controller";
+import { getMovieDetails } from "./get-movie-details-controller";
 
 export async function movieRoutes(app: FastifyInstance) {
   app.addHook("onRequest", verifyJwt);
@@ -27,5 +28,6 @@ export async function movieRoutes(app: FastifyInstance) {
     VoteMovie
   );
   app.get("/movies", fetchMovies);
+  app.get("/movie/:movieId", getMovieDetails);
   app.get("/movies/search", searchMovies);
 }

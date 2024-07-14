@@ -17,4 +17,5 @@ export interface MoviesRepository {
   vote(movieId: string, rating: number): Promise<void>;
   fetchMovies(): Promise<Movie[]>;
   searchMany(q: string): Promise<Movie[]>;
+  getMovieDetails(id: string): Promise<MovieResponse | null>;
 }

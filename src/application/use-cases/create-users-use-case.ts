@@ -29,7 +29,7 @@ export class CreateUserUseCase {
     if (usersWithSameEmail) {
       throw new UserAlreadyExistsError();
     }
-    console.log("usersWithSameEmail", usersWithSameEmail);
+
     const user = await this.usersRepository.create({
       name,
       email,

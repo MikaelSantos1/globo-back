@@ -19,16 +19,16 @@ export async function registerMovies(
   );
   try {
     const registerMovieUseCase = makeRegisterMovieUseCase();
-    await registerMovieUseCase.execute({
+    const { movie } = await registerMovieUseCase.execute({
       name,
       description,
       genreId,
       cast,
     });
+
+    return reply.status(201).send(movie);
   } catch (err) {
     console.log(err);
     return reply.status(400).send({ err });
   }
-
-  return reply.status(201).send();
 }
