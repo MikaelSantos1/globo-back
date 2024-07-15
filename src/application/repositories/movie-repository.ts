@@ -1,4 +1,4 @@
-import { Movie, Prisma, User } from "@prisma/client";
+import { Movie, Prisma, User, Genre } from "@prisma/client";
 
 export interface CreateMovieDTO extends Prisma.MovieUncheckedCreateInput {
   cast?: string[];
@@ -18,4 +18,5 @@ export interface MoviesRepository {
   fetchMovies(): Promise<Movie[]>;
   searchMany(q: string): Promise<Movie[]>;
   getMovieDetails(id: string): Promise<MovieResponse | null>;
+  fetchGenres(): Promise<Genre[]>;
 }

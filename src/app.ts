@@ -5,7 +5,10 @@ import { usersRoutes } from "./infra/http/controllers/users/route";
 import fastifyJwt from "@fastify/jwt";
 import fastifyCookie from "@fastify/cookie";
 import { movieRoutes } from "./infra/http/controllers/movies/route";
+import fastifyCors from "@fastify/cors";
 export const app = fastify();
+
+app.register(fastifyCors);
 
 app.register(fastifyJwt, {
   secret: env.JWT_SECRET,

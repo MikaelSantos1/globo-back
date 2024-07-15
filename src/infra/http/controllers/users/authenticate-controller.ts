@@ -41,7 +41,13 @@ export async function authenticate(
         httpOnly: true,
       })
       .status(200)
-      .send({ token });
+      .send({
+        token,
+
+        id: user.id,
+        name: user.name,
+        role: user.role,
+      });
   } catch (err) {
     if (err instanceof WrongCredentialsError) {
       return reply.status(400).send({ message: err.message });

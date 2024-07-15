@@ -5,8 +5,13 @@ import {
   UpdateMovieDTO,
 } from "@/application/repositories/movie-repository";
 import { prisma } from "@/infra/lib/prisma";
+import { Genre } from "@prisma/client";
 
 export class PrismaMoviesRepository implements MoviesRepository {
+  async fetchGenres(): Promise<Genre[]> {
+    const genres = await prisma.genre.findMany();
+    return genres;
+  }
   async searchMany(q: string) {
     const movies: MovieResponse[] = await prisma.movie.findMany({
       include: {

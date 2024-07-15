@@ -15,6 +15,9 @@ import {
 import { randomUUID } from "crypto";
 
 export class InMemoryMoviesRepository implements MoviesRepository {
+  fetchGenres(): Promise<Genre[]> {
+    throw new Error("Method not implemented.");
+  }
   private movies: Movie[] = [];
   public votes: MovieRating[] = [];
   private movieCast: MovieCast[] = [];
