@@ -1,11 +1,73 @@
-- Duvidas/ Regras de negócio
-
-- Um admin pode excluir/editar outros usuarios?
-- Como vai ser cadastrado diretor/atores, vai ser atraves do front com algum input/select?
-
-# Tecnologias usadas
+##Tecnologias usadas
 
 -Fastify
 -Prisma
 -Vitest
 -Docker-compose
+
+## Instalação e Execução
+
+1. **Clone o repositório:**
+
+   ```bash
+   git clone https://github.com/MikaelSantos1/globo-back.git
+
+   ```
+
+2. **Clone o repositório:**
+
+Copie o env.examplo e cole no seu arquivo env
+
+3. **Entre na pasta do projeto e instale as dependecias:**
+
+```bash
+  npm i
+
+```
+
+3. **Inicie os serviços com Docker Compose:**
+
+Copie o env.examplo e cole no seu arquivo env
+
+```bash
+   docker-compose up -d
+
+```
+
+4. **Gerencie o banco de dados com Prisma:**
+
+Copie o env.examplo e cole no seu arquivo env
+
+```bash
+   npx prisma migrate dev
+   npx prisma db seed
+
+```
+
+4. **Execute o projeto**
+
+```bash
+   npm run dev
+
+
+```
+
+5. **Testes**
+
+```bash
+   npm run test
+   npm run test:e2e
+
+```
+
+## Duvidas/ Regras de negócio
+
+- Um admin pode excluir/editar outros usuarios?
+- Como vai ser cadastrado diretor/atores, vai ser atraves do front com algum input/select?
+
+## Melhorias
+
+- Upload de fotos para nuvem (S3 por exemplo)
+- paginação nas listagems
+- Documentação
+- Refresh token

@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+import { hash } from "bcryptjs";
 
 const prisma = new PrismaClient();
 
@@ -35,6 +36,13 @@ const persons: person[] = [
 ];
 
 async function seed() {
+  await prisma.user.create({
+    data: {
+      email: "admin@admin.com",
+      name: "admin",
+      password_hash: await hash("123456", 6),
+    },
+  });
   for (const genre of genres) {
     await prisma.genre.create({
       data: genre,
