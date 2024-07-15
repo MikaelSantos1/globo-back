@@ -1,3 +1,4 @@
+import autoLoad from "@fastify/autoload";
 import fastify from "fastify";
 import { ZodError } from "zod";
 import { env } from "./env";
@@ -6,9 +7,16 @@ import fastifyJwt from "@fastify/jwt";
 import fastifyCookie from "@fastify/cookie";
 import { movieRoutes } from "./infra/http/controllers/movies/route";
 import fastifyCors from "@fastify/cors";
+
+import { fileURLToPath } from "url";
+
 export const app = fastify();
 
 app.register(fastifyCors);
+app.register(import("@fastify/swagger"));
+app.register(import("@fastify/swagger-ui"), {
+  routePrefix: "/documentation",
+});
 
 app.register(fastifyJwt, {
   secret: env.JWT_SECRET,
@@ -17,6 +25,7 @@ app.register(fastifyJwt, {
     expiresIn: "8h",
   },
 });
+
 app.register(fastifyCookie);
 app.register(usersRoutes);
 app.register(movieRoutes);

@@ -9,6 +9,7 @@ import { fetchMovies } from "./fetch-movies-controller";
 import { searchMovies } from "./search-movies-controller";
 import { getMovieDetails } from "./get-movie-details-controller";
 import { fetchGenres } from "./fetch-genres-controller";
+import { fetchCast } from "./fetch-cast-controller";
 
 export async function movieRoutes(app: FastifyInstance) {
   app.addHook("onRequest", verifyJwt);
@@ -32,4 +33,5 @@ export async function movieRoutes(app: FastifyInstance) {
   app.get("/movie/:movieId", getMovieDetails);
   app.get("/movies/search", searchMovies);
   app.get("/genres", fetchGenres);
+  app.get("/cast", fetchCast);
 }

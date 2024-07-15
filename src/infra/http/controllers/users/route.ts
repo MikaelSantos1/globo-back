@@ -5,6 +5,7 @@ import { verifyJwt } from "../../middlewares/verify-jwt";
 import { verifyUserRole } from "../../middlewares/verify-role";
 import { updateUser } from "./update-user-controller";
 import { disableUser } from "./disable-user-controller";
+import { profile } from "./profile-controller";
 
 export async function usersRoutes(app: FastifyInstance) {
   app.post("/sessions", authenticate);
@@ -16,4 +17,5 @@ export async function usersRoutes(app: FastifyInstance) {
   );
   app.put("/users/update", { onRequest: [verifyJwt] }, updateUser);
   app.patch("/users/disable", { onRequest: [verifyJwt] }, disableUser);
+  app.get("/me", { onRequest: [verifyJwt] }, profile);
 }

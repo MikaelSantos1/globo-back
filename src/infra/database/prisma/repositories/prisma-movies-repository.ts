@@ -5,9 +5,13 @@ import {
   UpdateMovieDTO,
 } from "@/application/repositories/movie-repository";
 import { prisma } from "@/infra/lib/prisma";
-import { Genre } from "@prisma/client";
+import { Genre, MovieCast, Person } from "@prisma/client";
 
 export class PrismaMoviesRepository implements MoviesRepository {
+  async fetchCast(): Promise<Person[]> {
+    const person = await prisma.person.findMany();
+    return person;
+  }
   async fetchGenres(): Promise<Genre[]> {
     const genres = await prisma.genre.findMany();
     return genres;
@@ -71,11 +75,17 @@ export class PrismaMoviesRepository implements MoviesRepository {
 
     return movies;
   }
-  async vote(movieId: string, rating: number): Promise<void> {
-    await prisma.movieRating.create({
-      data: {
+  async vote(movieId: string, rating: number, id: string): Promise<void> {
+    await prisma.movieRating.upsert({
+      create: {
         movie_id: movieId,
         rating,
+      },
+      update: {
+        rating,
+      },
+      where: {
+        id,
       },
     });
   }
