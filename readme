@@ -10,15 +10,11 @@
 1. **Clone o repositório:**
 
    ```bash
-   git clone https://github.com/MikaelSantos1/globo-back.git
+   git clone https://github.com/MikaelSantos1/globo-front.git
 
    ```
 
-2. **Clone o repositório:**
-
-Copie o env.examplo e cole no seu arquivo env
-
-3. **Entre na pasta do projeto e instale as dependecias:**
+2. **Entre na pasta do projeto e instale as dependecias:**
 
 ```bash
   npm i
@@ -44,7 +40,7 @@ Copie o env.examplo e cole no seu arquivo env
 
 ```
 
-4. **Execute o projeto**
+5. **Execute o projeto**
 
 ```bash
    npm run dev
@@ -52,7 +48,7 @@ Copie o env.examplo e cole no seu arquivo env
 
 ```
 
-5. **Testes**
+**Testes**
 
 ```bash
    npm run test
@@ -68,6 +64,6 @@ Copie o env.examplo e cole no seu arquivo env
 ## Melhorias
 
 - Upload de fotos para nuvem (S3 por exemplo)
-- paginação nas listagems
+- paginação nas listagens
 - Documentação
 - Refresh token
