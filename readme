@@ -9,52 +9,37 @@
 
 1. **Clone o repositório:**
 
-   ```bash
-   git clone https://github.com/MikaelSantos1/globo-front.git
-
-   ```
+   git clone https://github.com/MikaelSantos1/globo-back.git
 
 2. **Entre na pasta do projeto e instale as dependecias:**
 
-```bash
-  npm i
-
-```
+npm i
 
 3. **Inicie os serviços com Docker Compose:**
 
 Copie o env.examplo e cole no seu arquivo env
 
-```bash
-   docker-compose up -d
-
-```
+docker-compose up -d
 
 4. **Gerencie o banco de dados com Prisma:**
 
 Copie o env.examplo e cole no seu arquivo env
 
-```bash
-   npx prisma migrate dev
-   npx prisma db seed
+npx prisma migrate dev
+npx prisma db seed
 
-```
+O seed vai popular o banco com alguns dados como atores, etc.
+E vai criar um user admin:
+email:admin@admin.com
+senha:123456
 
 5. **Execute o projeto**
-
-```bash
    npm run dev
-
-
-```
 
 **Testes**
 
-```bash
-   npm run test
-   npm run test:e2e
-
-```
+npm run test
+npm run test:e2e
 
 ## Duvidas/ Regras de negócio
 
