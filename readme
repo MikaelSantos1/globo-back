@@ -2,3 +2,10 @@
 
 - Um admin pode excluir/editar outros usuarios?
 - Como vai ser cadastrado diretor/atores, vai ser atraves do front com algum input/select?
+
+# Tecnologias usadas
+
+-Fastify
+-Prisma
+-Vitest
+-Docker-compose
